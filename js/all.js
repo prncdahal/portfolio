@@ -137,14 +137,48 @@ function init(){
     initHeaderTilt();
 
 }
-
-
-
+// project scroll animation
 
 window.addEventListener('load', function(){
     init();
 });
 
+let tl=gsap.timeline();
 
+gsap.set(".project-list .details", { yPercent: 5});
+gsap.set(".project-list .media-img", { yPercent: -10});
+
+tl.to(".project-list .details",{
+    yPercent:-5,
+    ease: "none",
+   scrollTrigger:{
+       trigger:".project-list .row",
+       
+       scrub:1,
+   },
+   duration:0.5
+}).to(".project-list .media-img",{
+    yPercent:10,
+    ease: "none",
+   scrollTrigger:{
+       trigger:".project-list .row",
+       scrub:1,
+   },
+   duration:0.2
+});
+
+gsap.from(".fadetoText",{
+    scrollTrigger:{
+        trigger:'.fadetoText',
+       start:"-200px center",
+       end: "+=400",
+
+        scrub:1,
+        
+    },
+    autoAlpha:0,
+    x:-20,
+    duration:0.2
+ })
 
 
